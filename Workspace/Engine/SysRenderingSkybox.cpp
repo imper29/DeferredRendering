@@ -12,11 +12,13 @@ void SysRenderingSkybox::OnEvtReceived(SysRenderingPipeline::EvtRenderComposite&
 	if (m_SkyboxShader && m_SkyboxTexture) {
 		float4x4 projectionView = evt.projection * evt.view.withoutTranslation();
 
+		glDisable(GL_CULL_FACE);
 		glEnable(GL_DEPTH_TEST);
 		auto tess = m_SkyboxShader->Use();
 		glBindTextureUnit(0, m_SkyboxTexture->GetTexture());
 		glUniformMatrix4fv(m_SkyboxShader->GetUniformLocation("projectionViewModelMatrix"), 1, false, projectionView);
 		m_BlitMesh.Draw(tess);
+		glEnable(GL_CULL_FACE);
 		glDisable(GL_DEPTH_TEST);
 	}
 }

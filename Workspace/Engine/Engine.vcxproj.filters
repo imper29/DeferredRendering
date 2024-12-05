@@ -49,30 +49,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Assets\shaders\blit_frag.glsl" />
-    <None Include="Assets\shaders\blit_vert.glsl" />
-    <None Include="Assets\shaders\lighting\ambient_frag.glsl" />
-    <None Include="Assets\shaders\lighting\ambient_vert.glsl" />
-    <None Include="Assets\shaders\lighting\directional_frag.glsl" />
-    <None Include="Assets\shaders\lighting\directional_vert.glsl" />
-    <None Include="Assets\shaders\lighting\point_frag.glsl" />
-    <None Include="Assets\shaders\lighting\point_vert.glsl" />
-    <None Include="Assets\shaders\opaque_pbr_frag.glsl" />
-    <None Include="Assets\shaders\opaque_pbr_vert.glsl" />
-    <None Include="Assets\shaders\lighting\output_frag.glsl" />
-    <None Include="Assets\shaders\lighting\output_vert.glsl" />
-    <None Include="Assets\shaders\skyboxes\skybox_frag.glsl" />
-    <None Include="Assets\shaders\skyboxes\skybox_vert.glsl" />
-    <None Include="Assets\shaders\transparent_unlit_reflect_frag.glsl" />
-    <None Include="Assets\shaders\transparent_unlit_reflect_vert.glsl" />
-    <None Include="Assets\shaders\opaque_unlit_reflect_refract_frag.glsl" />
-    <None Include="Assets\shaders\opaque_unlit_reflect_refract_vert.glsl" />
-    <None Include="Assets\shaders\opaque_pbr_tess_frag.glsl" />
-    <None Include="Assets\shaders\opaque_pbr_tess_tess_ctrl.glsl" />
-    <None Include="Assets\shaders\opaque_pbr_tess_tess_eval.glsl" />
-    <None Include="Assets\shaders\opaque_pbr_tess_vert.glsl" />
-    <None Include="Assets\shaders\effects\fog_frag.glsl" />
-    <None Include="Assets\shaders\effects\fog_vert.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Gamepad.cpp">

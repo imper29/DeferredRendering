@@ -2,6 +2,7 @@
 #include <fstream>
 #include <memory>
 #include <iostream>
+#include <sstream>
 
 static GLuint GetGlStage(ShaderStage stage) {
 	if (stage == ShaderStage::TessCtrl)
@@ -57,20 +58,13 @@ ShaderStage ShaderSource::GetStage() const {
 ShaderSource ShaderSource::FromFile(const char* source, ShaderStage stage) {
 	std::ifstream stream;
 	stream.open(source);
-	stream.seekg(0, std::ios::end);
-	size_t length = stream.tellg();
-	stream.seekg(0, std::ios::beg);
-	auto buffer = new char[length + 1];
-	buffer[length] = '\0';
-	stream.read(buffer, length);
+	std::string stream_string = std::string(std::istreambuf_iterator<char>(stream), std::istreambuf_iterator<char>());
 	stream.close();
 	try {
-		ShaderSource result = ShaderSource::FromString(buffer, stage);
-		delete[] buffer;
+		ShaderSource result = ShaderSource::FromString(stream_string.data(), stage);
 		return result;
 	}
 	catch (std::string& error) {
-		delete[] buffer;
 		std::cout << source << std::endl;
 		std::cout << error << std::endl;
 		throw error;
