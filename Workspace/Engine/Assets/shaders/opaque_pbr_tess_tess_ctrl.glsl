@@ -15,9 +15,6 @@ layout(location = 3) out vec3 outEyeWorldPosition[];
 uniform mat4 model;
 uniform mat4 view;
 
-float clamp(float v, float lo, float hi) {
-	return max(min(v, hi), lo);
-}
 float inverseLerp(float v, float lo, float hi) {
 	return (v - lo) / (hi - lo);
 }
