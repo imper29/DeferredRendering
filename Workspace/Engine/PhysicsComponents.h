@@ -1,0 +1,10 @@
+#pragma once
+#include "CmpDamping.h"
+#include "CmpDampingAngular.h"
+#include "CmpCollider.h"
+#include "CmpGravityScale.h"
+#include "CmpMass.h"
+#include "CmpPhysicsMaterial.h"
+#include "CmpVelocity.h"
+#include "CmpVelocityAngular.h"
+#include "TagGravity.h"

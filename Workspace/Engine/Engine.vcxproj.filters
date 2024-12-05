@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Inputs">
+      <UniqueIdentifier>{98d4b362-aff1-4314-ad34-918fcd2344ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{ca2a1cf4-e589-42a6-bf62-6c765dab3606}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{70ecf47d-2e45-4b6a-8e05-3bfe1411ea79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mathematics">
+      <UniqueIdentifier>{bd00fac0-3847-4f4e-9852-abe75f92eaee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transforms">
+      <UniqueIdentifier>{4223b6a5-8e2f-4d99-a466-ef1e566512a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Systems">
+      <UniqueIdentifier>{811ed143-6cbb-4d1d-ab04-08f66037c1fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{f9e429f6-a5d1-4020-b0b8-262c1ae54f48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Components">
+      <UniqueIdentifier>{91c8bf7d-0ae9-4874-a75f-39fa0bfc84e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics\Damping">
+      <UniqueIdentifier>{a72012e9-731d-4bab-a4cb-d32b09683ba4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics\Gravity">
+      <UniqueIdentifier>{74b421e9-97ea-4b85-9eb1-a7d464483d73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics\Collisions">
+      <UniqueIdentifier>{5430900a-0c2e-46c0-b8f9-1ceab69e5c8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics\Collisions\Colliders">
+      <UniqueIdentifier>{300224c3-8fb8-4d87-b46e-f1edea05953a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Materials">
+      <UniqueIdentifier>{0b7b35d6-70af-4d68-86a5-7d0f38293d3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ScenesImpl">
+      <UniqueIdentifier>{c853bef2-a589-4209-8479-d8d7e8c2717c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics\Constraints">
+      <UniqueIdentifier>{b20a60ee-7ace-4e4a-90b4-72a7872bfbc1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Assets\shaders\blit_frag.glsl" />
+    <None Include="Assets\shaders\blit_vert.glsl" />
+    <None Include="Assets\shaders\lighting\ambient_frag.glsl" />
+    <None Include="Assets\shaders\lighting\ambient_vert.glsl" />
+    <None Include="Assets\shaders\lighting\directional_frag.glsl" />
+    <None Include="Assets\shaders\lighting\directional_vert.glsl" />
+    <None Include="Assets\shaders\lighting\point_frag.glsl" />
+    <None Include="Assets\shaders\lighting\point_vert.glsl" />
+    <None Include="Assets\shaders\opaque_pbr_frag.glsl" />
+    <None Include="Assets\shaders\opaque_pbr_vert.glsl" />
+    <None Include="Assets\shaders\lighting\output_frag.glsl" />
+    <None Include="Assets\shaders\lighting\output_vert.glsl" />
+    <None Include="Assets\shaders\skyboxes\skybox_frag.glsl" />
+    <None Include="Assets\shaders\skyboxes\skybox_vert.glsl" />
+    <None Include="Assets\shaders\transparent_unlit_reflect_frag.glsl" />
+    <None Include="Assets\shaders\transparent_unlit_reflect_vert.glsl" />
+    <None Include="Assets\shaders\opaque_unlit_reflect_refract_frag.glsl" />
+    <None Include="Assets\shaders\opaque_unlit_reflect_refract_vert.glsl" />
+    <None Include="Assets\shaders\opaque_pbr_tess_frag.glsl" />
+    <None Include="Assets\shaders\opaque_pbr_tess_tess_ctrl.glsl" />
+    <None Include="Assets\shaders\opaque_pbr_tess_tess_eval.glsl" />
+    <None Include="Assets\shaders\opaque_pbr_tess_vert.glsl" />
+    <None Include="Assets\shaders\effects\fog_frag.glsl" />
+    <None Include="Assets\shaders\effects\fog_vert.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Gamepad.cpp">
+      <Filter>Inputs</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Inputs</Filter>
+    </ClCompile>
+    <ClCompile Include="Keyboard.cpp">
+      <Filter>Inputs</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>Inputs</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneSystem.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Shader.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="SysCameraFreemode.cpp">
+      <Filter>Graphics\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Bitmap.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture2D.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture2DArray.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="SysPhysicsCollisionCollector.cpp">
+      <Filter>Physics\Collisions</Filter>
+    </ClCompile>
+    <ClCompile Include="SysPhysicsCollisionResolver.cpp">
+      <Filter>Physics\Collisions</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionInfo.cpp">
+      <Filter>Physics\Collisions</Filter>
+    </ClCompile>
+    <ClCompile Include="SysTransformCalculator.cpp">
+      <Filter>Transforms</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneBasic.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="SysPhysicsGravity.cpp">
+      <Filter>Physics\Gravity</Filter>
+    </ClCompile>
+    <ClCompile Include="SysPhysicsDamping.cpp">
+      <Filter>Physics\Damping</Filter>
+    </ClCompile>
+    <ClCompile Include="SysPhysicsVelocityIntegration.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="SysPhysicsSpatialPartitioner.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureCubeArray.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureCube.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraphicsTests.cpp">
+      <Filter>ScenesImpl</Filter>
+    </ClCompile>
+    <ClCompile Include="Framebuffer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureStencilDepth.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderSource.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="SysRenderingPipeline.cpp">
+      <Filter>Graphics\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Graphics\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialPbr.cpp">
+      <Filter>Graphics\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="SysRenderingMeshRenderers.cpp">
+      <Filter>Graphics\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="SysRenderingSkybox.cpp">
+      <Filter>Graphics\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="SysRenderingLighting.cpp">
+      <Filter>Graphics\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="SysRenderingFog.cpp">
+      <Filter>Graphics\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="SysPhysicsConstraintSolver.cpp">
+      <Filter>Physics\Constraints</Filter>
+    </ClCompile>
+    <ClCompile Include="ScenePhysicsTests.cpp">
+      <Filter>ScenesImpl</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Gamepad.h">
+      <Filter>Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="Keyboard.h">
+      <Filter>Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneSystem.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneSystemListener.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="float2.h">
+      <Filter>Mathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="float3.h">
+      <Filter>Mathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="float4.h">
+      <Filter>Mathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="math.h">
+      <Filter>Mathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="quaternion.h">
+      <Filter>Mathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="quaternionDual.h">
+      <Filter>Mathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="tiny_obj_loader.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="float4x4.h">
+      <Filter>Mathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="CmpParent.h">
+      <Filter>Transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="CmpPosition.h">
+      <Filter>Transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="CmpRotation.h">
+      <Filter>Transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="CmpTransformLocalToWorld.h">
+      <Filter>Transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="CmpVelocity.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="CmpVelocityAngular.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="SysCameraFreemode.h">
+      <Filter>Graphics\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="CmpLightPoint.h">
+      <Filter>Graphics\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="CmpLightAmbient.h">
+      <Filter>Graphics\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Bitmap.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture2D.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture2DArray.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Color32.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeSphere.h">
+      <Filter>Physics\Collisions\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapePlane.h">
+      <Filter>Physics\Collisions\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="SysPhysicsCollisionCollector.h">
+      <Filter>Physics\Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="SysPhysicsCollisionResolver.h">
+      <Filter>Physics\Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="CmpMass.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="CmpCollider.h">
+      <Filter>Physics\Collisions\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeType.h">
+      <Filter>Physics\Collisions\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeCube.h">
+      <Filter>Physics\Collisions\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionInfo.h">
+      <Filter>Physics\Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeAabb.h">
+      <Filter>Physics\Collisions\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="SysTransformCalculator.h">
+      <Filter>Transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformComponents.h">
+      <Filter>Transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsComponents.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneBasic.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="CmpDampingAngular.h">
+      <Filter>Physics\Damping</Filter>
+    </ClInclude>
+    <ClInclude Include="CmpDamping.h">
+      <Filter>Physics\Damping</Filter>
+    </ClInclude>
+    <ClInclude Include="TagGravity.h">
+      <Filter>Physics\Gravity</Filter>
+    </ClInclude>
+    <ClInclude Include="CmpGravityScale.h">
+      <Filter>Physics\Gravity</Filter>
+    </ClInclude>
+    <ClInclude Include="SysPhysicsGravity.h">
+      <Filter>Physics\Gravity</Filter>
+    </ClInclude>
+    <ClInclude Include="SysPhysicsDamping.h">
+      <Filter>Physics\Damping</Filter>
+    </ClInclude>
+    <ClInclude Include="SysPhysicsVelocityIntegration.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="SysPhysicsSpatialPartitioner.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="CmpPhysicsMaterial.h">
+      <Filter>Physics\Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="CmpScale.h">
+      <Filter>Transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureCubeArray.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureCube.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraphicsTests.h">
+      <Filter>ScenesImpl</Filter>
+    </ClInclude>
+    <ClInclude Include="Framebuffer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureStencilDepth.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderSource.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="SysRenderingPipeline.h">
+      <Filter>Graphics\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="CmpCamera.h">
+      <Filter>Graphics\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="CmpMeshRenderer.h">
+      <Filter>Graphics\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Graphics\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialPbr.h">
+      <Filter>Graphics\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="SysRenderingMeshRenderers.h">
+      <Filter>Graphics\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="CmpCameraFreecam.h">
+      <Filter>Graphics\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="SysRenderingSkybox.h">
+      <Filter>Graphics\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="SysRenderingLighting.h">
+      <Filter>Graphics\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="CmpLightDirectional.h">
+      <Filter>Graphics\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="int2.h">
+      <Filter>Mathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="int3.h">
+      <Filter>Mathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="int4.h">
+      <Filter>Mathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="noise.h">
+      <Filter>Mathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="SysRenderingFog.h">
+      <Filter>Graphics\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="CmpConstraintSpring.h">
+      <Filter>Physics\Constraints</Filter>
+    </ClInclude>
+    <ClInclude Include="SysPhysicsConstraintSolver.h">
+      <Filter>Physics\Constraints</Filter>
+    </ClInclude>
+    <ClInclude Include="ScenePhysicsTests.h">
+      <Filter>ScenesImpl</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
