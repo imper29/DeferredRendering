@@ -36,8 +36,9 @@ Mesh::Mesh() {
 	m_Vbo = 0;
 	m_DrawMode = 0;
 	m_VertexCount = 0;
+	m_Radius = 0;
 }
-Mesh::Mesh(const char* filename) : m_Vao(0), m_Vbo(0) {
+Mesh::Mesh(const char* filename) : m_Vao(0), m_Vbo(0), m_Radius() {
 	tinyobj::attrib_t attrib;
 	std::vector<tinyobj::shape_t> shapes;
 	std::vector<tinyobj::material_t> materials;
@@ -82,7 +83,7 @@ Mesh::Mesh(const char* filename) : m_Vao(0), m_Vbo(0) {
 		else
 			tangents.push_back(c2.normalized());
 	}
-	*this = Mesh(GL_TRIANGLES, (int32_t)positions.size(), &positions[0], &normals[0], &tangents[0], &uvs[0]);
+	new(this) Mesh(GL_TRIANGLES, (int32_t)positions.size(), &positions[0], &normals[0], &tangents[0], &uvs[0]);
 }
 Mesh::Mesh(GLenum drawMode, int32_t vertCount, const float3* vertPositions, const float3* vertNormals, const float3* vertTangents, const float2* vertUvs) {
 #define ID_POSITIONS 0
@@ -102,6 +103,15 @@ Mesh::Mesh(GLenum drawMode, int32_t vertCount, const float3* vertPositions, cons
 #define LEN_UVS (vertCount * sizeof(float2))
 	m_DrawMode = drawMode;
 	m_VertexCount = vertCount;
+
+	float radiusSquared = 0.0f;
+	for (size_t i = 0; i < vertCount; ++i) {
+		float radiusVert = vertPositions[i].lengthSq();
+		if (radiusSquared < radiusVert)
+			radiusSquared = radiusVert;
+	}
+	m_Radius = math::sqrt(radiusSquared);
+
 	glGenVertexArrays(1, &m_Vao);
 	glBindVertexArray(m_Vao);
 
@@ -150,6 +160,11 @@ void Mesh::DrawInstanced(int32_t count, GLenum drawMode) const {
 	glBindVertexArray(m_Vao);
 	glDrawArraysInstanced(drawMode, 0, count, m_VertexCount);
 	glBindVertexArray(0);
+}
+
+float Mesh::GetRadius() const
+{
+	return m_Radius;
 }
 
 GLuint Mesh::GetVao() const

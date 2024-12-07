@@ -89,6 +89,7 @@
     <ClInclude Include="float4.h" />
     <ClInclude Include="float4x4.h" />
     <ClInclude Include="Framebuffer.h" />
+    <ClInclude Include="frustumPlanes.h" />
     <ClInclude Include="Gamepad.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="int2.h" />

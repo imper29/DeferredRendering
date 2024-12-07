@@ -106,7 +106,6 @@ int main(int argc, char* argv[]) {
 			scene = SceneManager::GetCurrentScene();
 			PostEventRender(0, nullptr);
 		}
-		std::cout << "            \rmspf:" << std::chrono::duration_cast<std::chrono::milliseconds>(durationRender).count() << " mspu:" << std::chrono::duration_cast<std::chrono::milliseconds>(durationUpdate).count();
 	}
 	//Manager termination.
 	SceneManager::OnEvtQuit();

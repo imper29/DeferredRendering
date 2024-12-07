@@ -408,6 +408,9 @@
     <ClInclude Include="ScenePhysicsTests.h">
       <Filter>ScenesImpl</Filter>
     </ClInclude>
+    <ClInclude Include="frustumPlanes.h">
+      <Filter>Mathematics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\textures\earth\albedo.png" />

@@ -20,11 +20,13 @@ public:
 	void DrawInstanced(int32_t count) const;
 	void DrawInstanced(int32_t count, GLenum drawMode) const;
 
+	float GetRadius() const;
 	GLuint GetVao() const;
 	GLuint GetVbo() const;
 	GLenum GetDrawMode() const;
 	int32_t GetVertexCount() const;
 private:
+	float m_Radius;
 	GLuint m_Vao, m_Vbo;
 	GLenum m_DrawMode;
 	GLenum m_DrawModeTess;

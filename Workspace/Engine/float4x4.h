@@ -105,12 +105,12 @@ struct float4x4
 	}
 	static constexpr float4x4 perspective(float aspectRatio, float fov, float near, float far) {
 		float s = 1.0f / (math::tan(fov * 0.5f));
-		float a = (far) / (far - near);
-		float b = (far * near) / (far - near);
+		float a = (near + far) / (near - far);
+		float b = (2.0f * near * far) / (near - far);
 		return float4x4(s / aspectRatio, 0, 0, 0,
 						0, s, 0, 0,
-						0, 0, -a, -1,
-						0, 0, -b, 0);
+						0, 0, a, -1,
+						0, 0, b, 0);
 	}
 	static constexpr float4x4 orthographic(float aspectRatio, float height, float near, float far) {
 		float halfHeight = height * 0.5f;

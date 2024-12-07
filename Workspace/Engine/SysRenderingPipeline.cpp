@@ -4,6 +4,7 @@
 #include <iostream>
 
 static bool wireframe = false;
+static bool updateViewCull = true;
 static size_t outputAttachment = 0;
 constexpr static std::array<FramebufferAttachment, 8> outputAttachments = {
 	FramebufferAttachment::Color0,
@@ -55,6 +56,11 @@ void SysRenderingPipeline::OnEvtReceived(SDL_Event& evt) {
 			}
 			else if (evt.key.keysym.sym == SDL_KeyCode::SDLK_w) {
 				wireframe = !wireframe;
+				std::cout << "Wireframe " << (wireframe ? "true" : "false") << std::endl;
+			}
+			else if (evt.key.keysym.sym == SDL_KeyCode::SDLK_v) {
+				updateViewCull = !updateViewCull;
+				std::cout << "Update Frustum Planes " << (updateViewCull ? "false" : "true") << std::endl;
 			}
 		}
 	}
@@ -87,6 +93,9 @@ void SysRenderingPipeline::OnEvtReceived(Scene::EvtRender& evt) {
 		uint64_t layers = CmpCamera::GetLayers(scene.entities, cameraEntity);
 		float4x4 view = CmpCamera::GetView(scene.entities, cameraEntity);
 		float4x4 projection = CmpCamera::GetProjection(scene.entities, cameraEntity, (float)width, (float)height);
+		if (updateViewCull)
+			m_Frustum = projection * view;
+		frustumPlanes frustum = m_Frustum;
 		std::shared_ptr<Framebuffer> framebuffer = CmpCamera::GetFramebuffer(scene.entities, cameraEntity);
 		if (!framebuffer) {
 			framebuffer = m_Framebuffer;
@@ -120,7 +129,7 @@ void SysRenderingPipeline::OnEvtReceived(Scene::EvtRender& evt) {
 			glDepthFunc(GL_LEQUAL);
 			glDepthMask(true);
 			framebuffer->SetOutputs(EvtRenderGeometryOpaque::FramebufferOutputs);
-			scene.SendMessage(EvtRenderGeometryOpaque(*framebuffer, projection, view, layers));
+			scene.SendMessage(EvtRenderGeometryOpaque(*framebuffer, projection, frustum, view, layers));
 		}
 		//Render composite pre effects.
 		{
@@ -128,13 +137,13 @@ void SysRenderingPipeline::OnEvtReceived(Scene::EvtRender& evt) {
 			glEnable(GL_BLEND);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 			framebuffer->SetOutputs(EvtRenderCompositePreEffects::FramebufferOutputs);
-			scene.SendMessage(EvtRenderCompositePreEffects(*framebuffer, projection, view, layers));
+			scene.SendMessage(EvtRenderCompositePreEffects(*framebuffer, projection, frustum, view, layers));
 		}
 		//Render composite.
 		{
 			glBlendFunc(GL_ONE, GL_ONE);
 			framebuffer->SetOutputs(EvtRenderComposite::FramebufferOutputs);
-			scene.SendMessage(EvtRenderComposite(*framebuffer, projection, view, layers));
+			scene.SendMessage(EvtRenderComposite(*framebuffer, projection, frustum, view, layers));
 		}
 		//Render geometry transparent.
 		{
@@ -143,14 +152,14 @@ void SysRenderingPipeline::OnEvtReceived(Scene::EvtRender& evt) {
 			glEnable(GL_BLEND);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 			framebuffer->SetOutputs(EvtRenderGeometryTransparent::FramebufferOutputs);
-			scene.SendMessage(EvtRenderGeometryTransparent(*framebuffer, projection, view, layers));
+			scene.SendMessage(EvtRenderGeometryTransparent(*framebuffer, projection, frustum, view, layers));
 		}
 		//Render composite post effects.
 		{
 			glDisable(GL_DEPTH_TEST);
 			glDisable(GL_BLEND);
 			framebuffer->SetOutputs(EvtRenderCompositePostEffects::FramebufferOutputs);
-			scene.SendMessage(EvtRenderCompositePostEffects(*framebuffer, projection, view, layers));
+			scene.SendMessage(EvtRenderCompositePostEffects(*framebuffer, projection, frustum, view, layers));
 		}
 		//Render framebuffer output to actual output.
 		if (framebuffer == m_Framebuffer) {

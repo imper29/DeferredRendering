@@ -9,6 +9,7 @@
 #include "Framebuffer.h"
 #include "Shader.h"
 #include "Mesh.h"
+#include "frustumPlanes.h"
 
 class SysRenderingPipeline : public SceneSystem,
 	public SceneSystemListener<SDL_Event>,
@@ -79,11 +80,12 @@ public:
 		};
 
 		const Framebuffer& framebuffer;
+		const frustumPlanes& frustum;
 		const float4x4& projection;
 		const float4x4& view;
 		const uint64_t layers;
 
-		EvtRenderGeometryOpaque(const Framebuffer& framebuffer, const float4x4& projection, const float4x4& view, const uint64_t& layers) : framebuffer(framebuffer), projection(projection), view(view), layers(layers) {
+		EvtRenderGeometryOpaque(const Framebuffer& framebuffer, const float4x4& projection, const frustumPlanes& frustum, const float4x4& view, const uint64_t& layers) : framebuffer(framebuffer), projection(projection), frustum(frustum), view(view), layers(layers) {
 
 		}
 	};
@@ -96,11 +98,12 @@ public:
 		};
 
 		const Framebuffer& framebuffer;
+		const frustumPlanes& frustum;
 		const float4x4& projection;
 		const float4x4& view;
 		const uint64_t layers;
 
-		EvtRenderCompositePreEffects(const Framebuffer& framebuffer, const float4x4& projection, const float4x4& view, const uint64_t& layers) : framebuffer(framebuffer), projection(projection), view(view), layers(layers) {
+		EvtRenderCompositePreEffects(const Framebuffer& framebuffer, const float4x4& projection, const frustumPlanes& frustum, const float4x4& view, const uint64_t& layers) : framebuffer(framebuffer), projection(projection), frustum(frustum), view(view), layers(layers) {
 
 		}
 	};
@@ -113,11 +116,12 @@ public:
 		};
 
 		const Framebuffer& framebuffer;
+		const frustumPlanes& frustum;
 		const float4x4& projection;
 		const float4x4& view;
 		const uint64_t layers;
 
-		EvtRenderComposite(const Framebuffer& framebuffer, const float4x4& projection, const float4x4& view, const uint64_t& layers) : framebuffer(framebuffer), projection(projection), view(view), layers(layers) {
+		EvtRenderComposite(const Framebuffer& framebuffer, const float4x4& projection, const frustumPlanes& frustum, const float4x4& view, const uint64_t& layers) : framebuffer(framebuffer), projection(projection), frustum(frustum), view(view), layers(layers) {
 
 		}
 	};
@@ -131,11 +135,12 @@ public:
 		};
 
 		const Framebuffer& framebuffer;
+		const frustumPlanes& frustum;
 		const float4x4& projection;
 		const float4x4& view;
 		const uint64_t layers;
 
-		EvtRenderGeometryTransparent(const Framebuffer& framebuffer, const float4x4& projection, const float4x4& view, const uint64_t& layers) : framebuffer(framebuffer), projection(projection), view(view), layers(layers) {
+		EvtRenderGeometryTransparent(const Framebuffer& framebuffer, const float4x4& projection, const frustumPlanes& frustum, const float4x4& view, const uint64_t& layers) : framebuffer(framebuffer), projection(projection), frustum(frustum), view(view), layers(layers) {
 
 		}
 	};
@@ -148,11 +153,12 @@ public:
 		};
 
 		const Framebuffer& framebuffer;
+		const frustumPlanes& frustum;
 		const float4x4& projection;
 		const float4x4& view;
 		const uint64_t layers;
 
-		EvtRenderCompositePostEffects(const Framebuffer& framebuffer, const float4x4& projection, const float4x4& view, const uint64_t& layers) : framebuffer(framebuffer), projection(projection), view(view), layers(layers) {
+		EvtRenderCompositePostEffects(const Framebuffer& framebuffer, const float4x4& projection, const frustumPlanes& frustum, const float4x4& view, const uint64_t& layers) : framebuffer(framebuffer), projection(projection), frustum(frustum), view(view), layers(layers) {
 
 		}
 	};
@@ -162,6 +168,7 @@ private:
 
 	Mesh m_BlitMesh;
 	Shader m_BlitShader;
+	frustumPlanes m_Frustum;
 	std::shared_ptr<Texture2D> m_Output;
 	std::shared_ptr<Texture2D> m_WorldPositions;
 	std::shared_ptr<Texture2D> m_WorldNormals;

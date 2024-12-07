@@ -191,32 +191,41 @@ ScenePhysicsTests::ScenePhysicsTests() {
 		entities.emplace<CmpTransformLocalToWorld>(entity, float4x4::translate(float3(0.0f, -10.0f, 0.0f)));
 	}
 	//Create spheres.
-	for (int i = 0; i < materials.size(); ++i) {
-		auto anchor = entities.create();
-		entities.emplace<CmpMeshRendererOpaque>(anchor, whiteMaterial, cubeMesh);
-		entities.emplace<CmpTransformLocalToWorld>(anchor, float4x4::translate(float3(5.0f * i, 10.0f, 0.0f)));
-		auto entity = entities.create();
-		if (materials[i] == transparentReflectMaterial)
-			entities.emplace<CmpMeshRendererTransparent>(entity, materials[i], sphereMesh);
-		else
-			entities.emplace<CmpMeshRendererOpaque>(entity, materials[i], sphereMesh);
-		entities.emplace<CmpTransformLocalToWorld>(entity);
-		entities.emplace<CmpPosition>(entity, float3(5.0f * i, 5.0f, 0.0f) + math::random<float3>(-1.0f, 1.0f) + float3(0, math::random<>(-2.0f, 2.0f), 0.0f));
-		entities.emplace<CmpRotation>(entity);
-		entities.emplace<CmpVelocityAngular>(entity);
-		entities.emplace<CmpVelocity>(entity);
-		entities.emplace<CmpMass>(entity, 10.0f);
-		entities.emplace<TagGravity>(entity);
-		entities.emplace<CmpDampingAngular>(entity, 0.99f);
-		entities.emplace<CmpDamping>(entity, 0.9f);
-		auto spring = entities.create();
-		entities.emplace<CmpConstraintSpring>(spring, anchor, entity, float3(), float3(0, 1, 0), 30.0f, 7.0f);
+	if (true) {
 		auto anchorRenderer = entities.create();
-		entities.emplace<CmpParent>(anchorRenderer, entity);
 		entities.emplace<CmpMeshRendererOpaque>(anchorRenderer, whiteMaterial, sphereMesh);
 		entities.emplace<CmpTransformLocalToWorld>(anchorRenderer);
-		entities.emplace<CmpPosition>(anchorRenderer, entities.get<CmpConstraintSpring>(spring).bAnchor);
+		entities.emplace<CmpPosition>(anchorRenderer, float3(5.0f, 10.0f, 0.0f));
 		entities.emplace<CmpScale>(anchorRenderer, 0.2f);
+	}
+	if (true) {
+		for (int i = 0; i < materials.size(); ++i) {
+			auto anchor = entities.create();
+			entities.emplace<CmpMeshRendererOpaque>(anchor, whiteMaterial, cubeMesh);
+			entities.emplace<CmpTransformLocalToWorld>(anchor, float4x4::translate(float3(5.0f * i, 10.0f, 0.0f)));
+			auto entity = entities.create();
+			if (materials[i] == transparentReflectMaterial)
+				entities.emplace<CmpMeshRendererTransparent>(entity, materials[i], sphereMesh);
+			else
+				entities.emplace<CmpMeshRendererOpaque>(entity, materials[i], sphereMesh);
+			entities.emplace<CmpTransformLocalToWorld>(entity);
+			entities.emplace<CmpPosition>(entity, float3(5.0f * i, 5.0f, 0.0f) + math::random<float3>(-1.0f, 1.0f) + float3(0, math::random<>(-2.0f, 2.0f), 0.0f));
+			entities.emplace<CmpRotation>(entity);
+			entities.emplace<CmpVelocityAngular>(entity);
+			entities.emplace<CmpVelocity>(entity);
+			entities.emplace<CmpMass>(entity, 10.0f);
+			entities.emplace<TagGravity>(entity);
+			entities.emplace<CmpDampingAngular>(entity, 0.99f);
+			entities.emplace<CmpDamping>(entity, 0.9f);
+			auto spring = entities.create();
+			entities.emplace<CmpConstraintSpring>(spring, anchor, entity, float3(), float3(0, 1, 0), 30.0f, 7.0f);
+			auto anchorRenderer = entities.create();
+			entities.emplace<CmpParent>(anchorRenderer, entity);
+			entities.emplace<CmpMeshRendererOpaque>(anchorRenderer, whiteMaterial, sphereMesh);
+			entities.emplace<CmpTransformLocalToWorld>(anchorRenderer);
+			entities.emplace<CmpPosition>(anchorRenderer, entities.get<CmpConstraintSpring>(spring).bAnchor);
+			entities.emplace<CmpScale>(anchorRenderer, 0.2f);
+		}
 	}
 	//Create ambient light.
 	if (true) {
